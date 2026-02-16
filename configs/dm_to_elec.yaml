@@ -1,0 +1,47 @@
+seed: 42
+device: "cuda"
+
+processed_root: "data/processed"
+checkpoint_root: "checkpoints"
+
+source_domain: "Digital_Music"
+target_domain: "Electronics"
+
+raw_paths:
+  Movies: "data/raw/reviews_Digital_Music.json.gz"
+  Videos: "data/raw/reviews_Electronics.json.gz"
+
+preprocess:
+  k_core: 5
+  vocab_size: 50000
+  min_freq: 5
+
+tmn:
+  k1_word2vec_dim: 300
+  k2_latent_dim: 64
+  lr: 0.001
+  reg: 0.01
+  epochs: 10
+  batch_size: 256
+
+tcf:
+  k3_embed_dim: 64
+  lr: 0.001
+  reg: 0.01
+  epochs: 10
+  batch_size: 256
+
+tdar:
+  k3_embed_dim: 64
+  lr_source: 0.001
+  lr_target: 0.001
+  lr_cls: 0.001
+  lr_adv: 0.001
+  reg_source: 0.01
+  reg_target: 0.01
+  epochs: 10
+  batch_size: 512
+  source_neg_ratio: 4      # 论文里强调 target 不采负，source 用负采样来提供负监督
+
+eval:
+  topk: [2, 5, 10, 20, 50, 100]
