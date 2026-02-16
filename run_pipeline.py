@@ -8,7 +8,7 @@ from src.train.train_tmn import run_train_tmn
 from src.train.train_tcf import run_train_tcf
 from src.train.train_tdar import run_train_tdar
 from src.train.evaluate import run_evaluate
-from src.utils.seed import set_global_seed
+from src.utils.seeds import set_global_seed
 
 def main():
     parser = argparse.ArgumentParser()
