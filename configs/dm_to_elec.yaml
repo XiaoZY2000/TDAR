@@ -8,8 +8,8 @@ source_domain: "Digital_Music"
 target_domain: "Electronics"
 
 raw_paths:
-  Movies: "data/raw/reviews_Digital_Music.json.gz"
-  Videos: "data/raw/reviews_Electronics.json.gz"
+  Digital_Music: "data/raw/reviews_Digital_Music.json.gz"
+  Electronics: "data/raw/reviews_Electronics.json.gz"
 
 preprocess:
   k_core: 5

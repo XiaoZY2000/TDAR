@@ -8,8 +8,8 @@ source_domain: "Movies_and_TV"
 target_domain: "Electronics"
 
 raw_paths:
-  Movies: "data/raw/Movies_and_TV.json.gz"
-  Videos: "data/raw/reviews_Electronics.json.gz"
+  Movies_and_TV: "data/raw/Movies_and_TV.json.gz"
+  Electronics: "data/raw/reviews_Electronics.json.gz"
 
 preprocess:
   k_core: 5
