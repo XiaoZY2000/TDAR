@@ -12,11 +12,13 @@ from src.utils.seeds import set_global_seed
 
 def main():
     parser = argparse.ArgumentParser()
+    # 可手动指定配置文件和阶段，默认执行全部阶段
     parser.add_argument("--config", type=str, required=True)
     parser.add_argument("--stages", type=str, default="all",
                         help="all | preprocess | tmn | tcf | tdar | eval | preprocess,tmn,...")
     args = parser.parse_args()
 
+    # 加载配置文件
     cfg = yaml.safe_load(open(args.config, "r", encoding="utf-8"))
     stages = args.stages
     if stages == "all":
@@ -24,11 +26,13 @@ def main():
     else:
         stages = [s.strip() for s in stages.split(",")]
 
+    # 设置随机种子，默认为42
     set_global_seed(cfg.get("seed", 42))
 
     # ---------- preprocess ----------
     if "preprocess" in stages:
         for dom in [cfg["source_domain"], cfg["target_domain"]]:
+            # 对于每个领域，读取原始数据路径，创建处理后数据的输出目录，并调用预处理函数
             in_path = cfg["raw_paths"][dom]
             out_dir = Path(cfg["processed_root"]) / dom
             out_dir.mkdir(parents=True, exist_ok=True)
